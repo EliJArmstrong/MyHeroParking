@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Override point for customization after application launch.
+        Parse.initialize(
+            with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                
+            })
+        )
+        
+        PFUser.enableAutomaticUser()
+        
+        PFGeoPoint.geoPointForCurrentLocation { (point, error) in
+            if let point = point{
+                PFUser.current()?.userLocation = point
+                PFUser.current()?.experincePoints = 0
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
+        
+        
+        PFUser.current()?.saveInBackground(block: { (success, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            } else{
+                print("Automatic User Created. 😁")
+            }
+        })
         return true
     }
 
@@ -40,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
 
 }
 

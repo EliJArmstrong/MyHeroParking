@@ -1,24 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="K3o-a9-sb1">
+    <device id="retina6_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--MyHero - Parking-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MapVC" customModule="MyHeroParking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="an0-jU-8G0">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="FeY-qU-CV3"/>
+                                    <outletCollection property="gestureRecognizers" destination="3R5-4o-CIH" appends="YES" id="G93-0F-cKj"/>
+                                </connections>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsM-6l-Kih">
+                                <rect key="frame" x="143" y="783" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Open Parking Spot"/>
+                                <connections>
+                                    <action selector="postSpot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8GB-Eg-VF6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z82-cp-FVg">
+                                <rect key="frame" x="349" y="88" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="followMePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="681-Fk-NaN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-ry-toF">
+                                <rect key="frame" x="20" y="88" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="enablePinDrops"/>
+                                <connections>
+                                    <action selector="enableButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q5y-DZ-Kdp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="an0-jU-8G0" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LnY-eU-0wq"/>
+                            <constraint firstItem="an0-jU-8G0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Myg-xA-Tum"/>
+                            <constraint firstItem="an0-jU-8G0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="f3W-nI-j3u"/>
+                            <constraint firstAttribute="bottom" secondItem="an0-jU-8G0" secondAttribute="bottom" id="jVa-jt-ZCv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="MyHero - Parking" id="DmO-hw-r4A"/>
+                    <connections>
+                        <outlet property="mapView" destination="an0-jU-8G0" id="GY3-i8-bEe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3R5-4o-CIH">
+                    <connections>
+                        <action selector="dropPin:" destination="BYZ-38-t0r" id="MvH-Ks-ceo"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="1952" y="-498"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vDN-cS-J7y">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="K3o-a9-sb1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="FnT-RZ-Zae">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.83409279579999995" green="0.7097730256" blue="0.060932990130000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="kbT-T4-W8u" kind="relationship" relationship="viewControllers" id="8mG-wz-MSP"/>
+                        <segue destination="GtH-Ei-jJh" kind="relationship" relationship="viewControllers" id="lg7-Qg-LEJ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="COz-3l-V0M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139.13043478260872" y="132.58928571428572"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="QNc-0o-Uvh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kbT-T4-W8u" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="uds-qP-CfE"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Uwi-HP-tjF">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.83409279579999995" green="0.7097730256" blue="0.060932990130000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hwq-Z1-gdD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ga-Q1-o3M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="-497"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="1zJ-5B-qUe">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GtH-Ei-jJh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="gic-t2-7ya"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xlV-VM-yDI">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sf0-SH-5Dd" kind="relationship" relationship="rootViewController" id="TC2-xN-XRd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yNt-DR-sYK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063.768115942029" y="853.79464285714278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eZv-kY-s5P">
+            <objects>
+                <viewController id="Sf0-SH-5Dd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vAz-9i-4Eb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="QFD-PB-5md"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1C8-Rh-3VW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p5Y-14-lsx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2025" y="854"/>
         </scene>
     </scenes>
 </document>

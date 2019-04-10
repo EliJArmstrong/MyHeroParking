@@ -1,0 +1,41 @@
+PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts-Swift (1.4.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - Parse (1.17.2):
+    - Parse/Core (= 1.17.2)
+  - Parse/Core (1.17.2):
+    - Bolts/Tasks (~> 1.9)
+  - ParseLiveQuery (2.5.0):
+    - Bolts (~> 1.9.0)
+    - Bolts-Swift (~> 1.4.0)
+    - Parse (~> 1.17.0)
+    - Starscream (~> 3.0.4)
+  - Starscream (3.0.6)
+
+DEPENDENCIES:
+  - Parse
+  - ParseLiveQuery
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - Bolts-Swift
+    - Parse
+    - ParseLiveQuery
+    - Starscream
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  Bolts-Swift: 650d72e8017721b1a6bbe43d542c4578f8e5ba6f
+  Parse: 3b31a3dd1777b07ee7f0caee32fafbff544483a5
+  ParseLiveQuery: 84cce90a2ee3af04ed51249bc1734c4a6dbe09ab
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+
+PODFILE CHECKSUM: 2a5a33ed1c17bb8b95e440b6b0683a6fb42100a0
+
+COCOAPODS: 1.5.3
