@@ -1,7 +1,9 @@
 # MyHeroParking
 
+Thank you for chacking out app. This app is an early attempt to make a social parking spot availability app.
+
 This app is currently in development and the code will change as time goes on.
-The current code was just to figure out fetures and the look of the app. 
+The current code was just to figure out fetures and the look of the app. Now that I understand my data base and how the functions of my iOS app the code will be refactored and cleaned up.
 
 This is a side project IOS app to help people connect by sharing when the parking space there are going. This App uses a custom parse DB to store and share data.
 
