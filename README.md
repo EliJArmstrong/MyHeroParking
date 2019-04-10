@@ -1,6 +1,7 @@
 # MyHeroParking
 
 This app is currently in development and the code will change as time goes on.
+The current code was just to figure out fetures and the look of the app. 
 
 This is a side project IOS app to help people connect by sharing when the parking space there are going. This App uses a custom parse DB to store and share data.
 
