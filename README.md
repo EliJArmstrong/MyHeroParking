@@ -13,3 +13,9 @@ Available parking spots are in green and paring spot that are taken are red.
 The lastest update of the app makes it so that only one user can claim only one parking spot at a time.
 
 <img src="/Gifs/parkingApp.gif?raw=true" width="" alt= 'Video Walkthrough'>
+
+# Up Next 
+
+[ ] Refactoring code to be more steamline
+[ ] User login page (xib)
+[ ] Added User profiles  
