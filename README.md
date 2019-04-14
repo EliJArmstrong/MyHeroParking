@@ -17,5 +17,7 @@ The lastest update of the app makes it so that only one user can claim only one 
 # Up Next 
 
 [ ] Refactoring code to be more steamline
+
 [ ] User login page (xib)
+
 [ ] Added User profiles  
