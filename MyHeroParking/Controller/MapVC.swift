@@ -75,12 +75,12 @@ class MapVC: UIViewController{
             annotationArray.append(ParkingAnnotation(spot: spot))
             if spot.dibbsUser?.objectId == PFUser.current()?.objectId{
                 dibbsSpot = spot
-                print("Hello")
+                // print("Hello")
             }
         }
-        let annotationsToRemove = mapView.annotations.filter { (anno) -> Bool in
-            return !annotationArray.contains{ ($0.coordinate.longitude == anno.coordinate.longitude) && ($0.coordinate.latitude == anno.coordinate.latitude)}
-        }
+//        let annotationsToRemove = mapView.annotations.filter { (anno) -> Bool in
+//            return !annotationArray.contains{ ($0.coordinate.longitude == anno.coordinate.longitude) && ($0.coordinate.latitude == anno.coordinate.latitude)}
+//        }
         
         mapView.removeAnnotations( mapView.annotations )
         //mapView.removeAnnotations( annotationsToRemove )
