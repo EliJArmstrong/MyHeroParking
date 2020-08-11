@@ -12,4 +12,6 @@ import Parse
 extension PFUser{
     @NSManaged var userLocation: PFGeoPoint
     @NSManaged var experincePoints: Int64
+    @NSManaged var image: PFFileObject
+    @NSManaged var friends: [PFUser]
 }

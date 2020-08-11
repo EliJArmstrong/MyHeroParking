@@ -8,5 +8,6 @@ target 'MyHeroParking' do
   # Pods for MyHeroParking
   pod 'Parse'
   pod 'ParseLiveQuery'
+  pod 'AlamofireImage'
 
 end

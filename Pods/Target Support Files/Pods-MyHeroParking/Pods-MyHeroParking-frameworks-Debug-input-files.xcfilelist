@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
+${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/ParseLiveQuery/ParseLiveQuery.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework

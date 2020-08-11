@@ -24,11 +24,15 @@ class MapVC: UIViewController{
     
     var parkingSpots = [ParkingSpot]()
     var dibbsSpot: ParkingSpot?
+    var selectedSpot: ParkingSpot?
     
     var subscriber: ParseLiveQuery.Client!
     var subscription: Subscription<PFObject>?
     
-
+    @IBAction func nilBtnHit(_ sender: Any) {
+        self.dibbsSpot = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.register(ParkingSpotViews.self,
@@ -46,6 +50,15 @@ class MapVC: UIViewController{
             default:
                     print("this happen: \(event)" )
                     self.getparkingSoptData()
+                    var dibbsFound = false
+                    for spot in self.parkingSpots {
+                        if spot.objectId == self.dibbsSpot?.objectId{
+                            dibbsFound = true
+                        }
+                    }
+                    if(dibbsFound == false){
+                        self.dibbsSpot = nil
+                    }
                 break
             }
         })
@@ -121,7 +134,7 @@ class MapVC: UIViewController{
             let newSpot = ParkingSpot()
             newSpot.saveParkingSpot(atLocation: touchMapCoordinate) { (success, error) in
                 if let error = error {
-                    print("Well shit!!")
+                    print("Well shit!! 💩")
                     print(error.localizedDescription)
                 } else{
                     print("Awesome we were able to use long press to drop a pin")
@@ -210,6 +223,15 @@ class MapVC: UIViewController{
 
 }
 
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 extension MapVC: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -226,7 +248,22 @@ extension MapVC: CLLocationManagerDelegate{
     }
 }
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// This extension is used for dealing with the map View
 extension MapVC: MKMapViewDelegate{
+    
+    
+    /// Tells the delegate that the region displayed by the map view just changed.
+    /// Dev note: When the map is moved either from user scroll or map following the user this function is called
+    /// - Parameters:
+    ///   - mapView: The map view whose visible region changed.
+    ///   - animated: If true, the change to the new region was animated
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         getparkingSoptData()
     }
@@ -256,55 +293,138 @@ extension MapVC: MKMapViewDelegate{
 //        return view
 //    }
     
+    
+    
+    /// Tells the delegate that the user tapped one of the annotation view’s accessory buttons.
+    /// - Parameters:
+    ///   - mapView: The map view containing the specified annotation view.
+    ///   - view: The annotation view whose button was tapped.
+    ///   - control: The control that was tapped.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView,
                  calloutAccessoryControlTapped control: UIControl) {
-        let location = view.annotation as! ParkingAnnotation
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        location.mapItem().openInMaps(launchOptions: launchOptions)
+        
+        // the right accessort view is the map button
+        if control == view.rightCalloutAccessoryView {
+            let location = view.annotation as! ParkingAnnotation
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            location.mapItem().openInMaps(launchOptions: launchOptions)
+        }
     }
     
+    
+    
+    /// Tells the delegate that one of its annotation views was selected.
+    /// - Parameters:
+    ///   - mapView: The map view containing the annotation view.
+    ///   - view: The annotation view that was selected.
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let parkingAnno = view.annotation as! ParkingAnnotation
         
         
-        if(parkingAnno.parkingSpot.dibbs == false && parkingAnno.parkingSpot.poster != PFUser.current()){
+        
+        if let parkingAnno = view.annotation as? ParkingAnnotation{
             
-            if dibbsSpot != nil{
-                dibbsSpot?.dibbs = false
-                dibbsSpot?.dibbsUser = nil
-                dibbsSpot?.saveInBackground(block: { (success, error) in
-                    if let error = error{
-                        print(error.localizedDescription)
-                    } else{
-                        self.dibbsSpot = parkingAnno.parkingSpot
-                        parkingAnno.parkingSpot.dibbs = true
-                        parkingAnno.parkingSpot.dibbsUser = PFUser.current()
-                        parkingAnno.parkingSpot.saveInBackground { (success, error) in
-                            if let error = error{
-                                print(error.localizedDescription)
-                                print("1")
-                            } else{
-                                print("The Dibbs was maked.")
+            //print("Anno is poster is current user: \(parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId)")
+
+            if(parkingAnno.parkingSpot.dibbs == false && parkingAnno.parkingSpot.poster.objectId != PFUser.current()?.objectId){
+                
+                // Checks if this user currently has a dibbs on a spot.
+                if dibbsSpot != nil{
+                    dibbsSpot?.dibbs = false
+                    dibbsSpot?.dibbsUser = nil
+                    dibbsSpot?.saveInBackground(block: { (success, error) in
+                        if let error = error{
+                            print("problem 1")
+                            print(error.localizedDescription)
+                        } else{
+                            self.dibbsSpot = parkingAnno.parkingSpot
+                            parkingAnno.parkingSpot.dibbs = true
+                            parkingAnno.parkingSpot.dibbsUser = PFUser.current()
+                            parkingAnno.parkingSpot.saveInBackground { (success, error) in
+                                if let error = error{
+                                    print(error.localizedDescription)
+                                    print("1")
+                                } else{
+                                    print("The Dibbs was maked.")
+                                }
                             }
                         }
-                    }
-                })
-            }else{
-                self.dibbsSpot = parkingAnno.parkingSpot
-                parkingAnno.parkingSpot.dibbs = true
-                parkingAnno.parkingSpot.dibbsUser = PFUser.current()
-                parkingAnno.parkingSpot.saveInBackground { (success, error) in
-                    if let error = error{
-                        print(error.localizedDescription)
-                        print("2")
-                    } else{
-                        print("The Dibbs was maked.")
+                    })
+                }else{
+                    self.dibbsSpot = parkingAnno.parkingSpot
+                    parkingAnno.parkingSpot.dibbs = true
+                    parkingAnno.parkingSpot.dibbsUser = PFUser.current()
+                    parkingAnno.parkingSpot.saveInBackground { (success, error) in
+                        if let error = error{
+                            print(error.localizedDescription)
+                            print("2")
+                        } else{
+                            print("The Dibbs was maded.")
+                        }
                     }
                 }
             }
             
+            if parkingAnno.parkingSpot.dibbsUser?.objectId == PFUser.current()?.objectId {
+                self.dibbsSpot = parkingAnno.parkingSpot
+                view.detailCalloutAccessoryView = createUndibbsBtn()
+            } else if parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId {
+                self.selectedSpot = parkingAnno.parkingSpot
+                view.detailCalloutAccessoryView = createDeleteParkingBtn()
+            }
         }
+        
+        print(parkingSpots.count)
 
+    }
+    
+    func createDeleteParkingBtn() -> UIButton{
+        let width = 250
+        let height = 250
+        let deleteBtn = UIButton(frame: CGRect(x: 0, y: height - 35, width: width / 2 - 5, height: 35))
+        deleteBtn.setTitle("Delete Parking Spot", for: .normal)
+        deleteBtn.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        deleteBtn.layer.cornerRadius = 5
+        deleteBtn.layer.borderWidth = 1
+        deleteBtn.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) // There is a color is just black
+        deleteBtn.addTarget(self, action: #selector(self.deleteSpot), for: .touchDown)
+        return deleteBtn
+    }
+    
+    @objc func deleteSpot(){
+        self.selectedSpot?.deleteInBackground(block: { (success, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            } else{
+                print("deleted spot")
+            }
+        })
+    }
+    
+    func createUndibbsBtn() -> UIButton{
+        let width = 250
+        let height = 250
+        let unDibbsBtn = UIButton(frame: CGRect(x: 0, y: height - 35, width: width / 2 - 5, height: 35))
+        unDibbsBtn.setTitle("UnDibbs", for: .normal)
+        unDibbsBtn.backgroundColor = UIColor.darkGray
+        unDibbsBtn.layer.cornerRadius = 5
+        unDibbsBtn.layer.borderWidth = 1
+        unDibbsBtn.layer.borderColor = UIColor.black.cgColor
+        unDibbsBtn.addTarget(self, action: #selector(self.unDibbsSpot), for: .touchDown)
+        
+        return unDibbsBtn
+    }
+    
+    @objc func unDibbsSpot(){
+        self.dibbsSpot?.dibbsUser = nil
+        self.dibbsSpot?.dibbs = false
+        self.dibbsSpot?.saveInBackground(block: { (success, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            } else{
+                print("Undibbs was name")
+                self.dibbsSpot = nil
+            }
+        })
     }
         
     

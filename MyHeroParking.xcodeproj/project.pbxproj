@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,11 @@
 		B7B5F0982247C2D600CFC0BD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F0972247C2D600CFC0BD /* User.swift */; };
 		B7B5F09A2247CB1000CFC0BD /* ParkingSpot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F0992247CB1000CFC0BD /* ParkingSpot.swift */; };
 		B7B5F09D2248783400CFC0BD /* parkingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */; };
+		B7F4F904230E13E2009F52B5 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F903230E13E2009F52B5 /* ProfileVC.swift */; };
+		B7F4F906230E1F5E009F52B5 /* SignInLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */; };
+		B7F4F908230E4115009F52B5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F907230E4115009F52B5 /* Utilities.swift */; };
+		B7F4F90F230E4293009F52B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F90D230E4293009F52B5 /* GradientView.swift */; };
+		B7F4F910230E4293009F52B5 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F90E230E4293009F52B5 /* RoundedImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		B7B5F0972247C2D600CFC0BD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B7B5F0992247CB1000CFC0BD /* ParkingSpot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSpot.swift; sourceTree = "<group>"; };
 		B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parkingAnnotation.swift; sourceTree = "<group>"; };
+		B7F4F903230E13E2009F52B5 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLogInVC.swift; sourceTree = "<group>"; };
+		B7F4F907230E4115009F52B5 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B7F4F90D230E4293009F52B5 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		B7F4F90E230E4293009F52B5 /* RoundedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 			children = (
 				B7B5F0972247C2D600CFC0BD /* User.swift */,
 				B7B5F0992247CB1000CFC0BD /* ParkingSpot.swift */,
+				B7F4F907230E4115009F52B5 /* Utilities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -60,6 +71,8 @@
 		B78ED0C0225D8F6C00252E31 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B7F4F90D230E4293009F52B5 /* GradientView.swift */,
+				B7F4F90E230E4293009F52B5 /* RoundedImage.swift */,
 				B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */,
 				B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */,
 			);
@@ -70,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				B7B5F08222479FE000CFC0BD /* MapVC.swift */,
+				B7F4F903230E13E2009F52B5 /* ProfileVC.swift */,
+				B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,28 +242,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts-Swift/BoltsSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
-				"${BUILT_PRODUCTS_DIR}/ParseLiveQuery/ParseLiveQuery.framework",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BoltsSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ParseLiveQuery.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -258,11 +260,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7F4F906230E1F5E009F52B5 /* SignInLogInVC.swift in Sources */,
 				B7B5F09D2248783400CFC0BD /* parkingAnnotation.swift in Sources */,
+				B7F4F90F230E4293009F52B5 /* GradientView.swift in Sources */,
 				B78F275D224F53B0003EBF8C /* ParkingSpotViews.swift in Sources */,
+				B7F4F904230E13E2009F52B5 /* ProfileVC.swift in Sources */,
 				B7B5F08322479FE000CFC0BD /* MapVC.swift in Sources */,
 				B7B5F08122479FE000CFC0BD /* AppDelegate.swift in Sources */,
+				B7F4F908230E4115009F52B5 /* Utilities.swift in Sources */,
 				B7B5F09A2247CB1000CFC0BD /* ParkingSpot.swift in Sources */,
+				B7F4F910230E4293009F52B5 /* RoundedImage.swift in Sources */,
 				B7B5F0982247C2D600CFC0BD /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,7 +427,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = core.ParkingHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -439,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = core.ParkingHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

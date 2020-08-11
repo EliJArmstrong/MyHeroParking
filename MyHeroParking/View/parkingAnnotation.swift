@@ -19,10 +19,10 @@ class ParkingAnnotation: NSObject, MKAnnotation {
 
     var markerTintColor: UIColor  {
         switch dibbs {
-        case true:
-            return .red
-        case false:
-            return .green
+            case true:
+                return .red
+            case false:
+                return .green
         }
     }
     
@@ -42,7 +42,9 @@ class ParkingAnnotation: NSObject, MKAnnotation {
         let addressDict = [CNPostalAddressStreetKey: "Cool"]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = "Hello"
+        mapItem.name = "MapCordBtn"
         return mapItem
     }
+    
+    
 }

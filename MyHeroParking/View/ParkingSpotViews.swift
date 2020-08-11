@@ -12,6 +12,7 @@ import MapKit
 class ParkingSpotViews: MKMarkerAnnotationView{
     override var annotation: MKAnnotation? {
         willSet {
+            
             // 1
             guard let parking = newValue as? ParkingAnnotation else { return }
             canShowCallout = true
@@ -20,6 +21,7 @@ class ParkingSpotViews: MKMarkerAnnotationView{
                                                     size: CGSize(width: 30, height: 30)))
             mapsButton.setBackgroundImage(UIImage(named: "Maps-icon"), for: UIControl.State())
             rightCalloutAccessoryView = mapsButton
+            
             // 2
             markerTintColor = parking.markerTintColor
             glyphText = "P"

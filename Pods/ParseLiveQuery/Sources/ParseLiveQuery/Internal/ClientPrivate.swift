@@ -33,7 +33,7 @@ private func parseObject<T: PFObject>(_ objectDictionary: [String:AnyObject]) th
 
 extension Client {
     class SubscriptionRecord {
-        weak var subscriptionHandler: AnyObject?
+        var subscriptionHandler: AnyObject?
         // HandlerClosure captures the generic type info passed into the constructor of SubscriptionRecord,
         // and 'unwraps' it so that it can be used with just a 'PFObject' instance.
         // Technically, this should be a compiler no-op, as no witness tables should be used as 'PFObject' currently inherits from NSObject.
@@ -180,7 +180,7 @@ extension Event {
 extension Client {
     fileprivate func subscriptionRecord(_ requestId: RequestId) -> SubscriptionRecord? {
         guard
-            let recordIndex = self.subscriptions.index(where: { $0.requestId == requestId }) else {
+            let recordIndex = self.subscriptions.firstIndex(where: { $0.requestId == requestId }) else {
                 return nil
         }
         let record = self.subscriptions[recordIndex]
@@ -225,7 +225,7 @@ extension Client {
 
             case .unsubscribed(let requestId):
                 guard
-                    let recordIndex = self.subscriptions.index(where: { $0.requestId == requestId })
+                    let recordIndex = self.subscriptions.firstIndex(where: { $0.requestId == requestId })
                      else {
                         break
                 }
