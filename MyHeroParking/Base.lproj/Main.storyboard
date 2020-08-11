@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="30" id="BJe-6J-re7"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="Icy-rL-f36"/>
                                 </constraints>
-                                <state key="normal" title="SetDibbsToNil"/>
+                                <state key="normal" title="SetDibsToNil"/>
                                 <connections>
                                     <action selector="nilBtnHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qsr-6V-oSD"/>
                                 </connections>
@@ -60,7 +60,7 @@
                                     <action selector="followMePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="681-Fk-NaN"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-ry-toF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A0y-ry-toF">
                                 <rect key="frame" x="20" y="85" width="178" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="178" id="nCO-oK-N5S"/>

@@ -15,10 +15,10 @@ class ParkingAnnotation: NSObject, MKAnnotation {
     
     var parkingSpot: ParkingSpot
     var coordinate: CLLocationCoordinate2D
-    var dibbs: Bool
+    var dibs: Bool
 
     var markerTintColor: UIColor  {
-        switch dibbs {
+        switch dibs {
             case true:
                 return .red
             case false:
@@ -28,7 +28,7 @@ class ParkingAnnotation: NSObject, MKAnnotation {
     
     init(spot: ParkingSpot) {
         self.coordinate = CLLocationCoordinate2D(latitude: spot.location.latitude, longitude: spot.location.longitude)
-        self.dibbs = spot.dibbs
+        self.dibs = spot.dibs
         self.parkingSpot = spot
     }
     

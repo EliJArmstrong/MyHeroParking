@@ -23,14 +23,14 @@ class MapVC: UIViewController{
     var dropPin = false
     
     var parkingSpots = [ParkingSpot]()
-    var dibbsSpot: ParkingSpot?
+    var dibsSpot: ParkingSpot?
     var selectedSpot: ParkingSpot?
     
     var subscriber: ParseLiveQuery.Client!
     var subscription: Subscription<PFObject>?
     
     @IBAction func nilBtnHit(_ sender: Any) {
-        self.dibbsSpot = nil
+        self.dibsSpot = nil
     }
     
     override func viewDidLoad() {
@@ -43,21 +43,21 @@ class MapVC: UIViewController{
     
     func startListener(){
         subscriber = ParseLiveQuery.Client()
-        subscription = subscriber.subscribe(ParkingSpot.query()!.whereKeyExists("dibbs"))
+        subscription = subscriber.subscribe(ParkingSpot.query()!.whereKeyExists("dibs"))
         
         _ = subscription?.handleEvent({ (_, event) in
             switch event {
             default:
                     print("this happen: \(event)" )
                     self.getparkingSoptData()
-                    var dibbsFound = false
+                    var dibsFound = false
                     for spot in self.parkingSpots {
-                        if spot.objectId == self.dibbsSpot?.objectId{
-                            dibbsFound = true
+                        if spot.objectId == self.dibsSpot?.objectId{
+                            dibsFound = true
                         }
                     }
-                    if(dibbsFound == false){
-                        self.dibbsSpot = nil
+                    if(dibsFound == false){
+                        self.dibsSpot = nil
                     }
                 break
             }
@@ -86,8 +86,8 @@ class MapVC: UIViewController{
         
         for spot in parkingSpots {
             annotationArray.append(ParkingAnnotation(spot: spot))
-            if spot.dibbsUser?.objectId == PFUser.current()?.objectId{
-                dibbsSpot = spot
+            if spot.dibsUser?.objectId == PFUser.current()?.objectId{
+                dibsSpot = spot
                 // print("Hello")
             }
         }
@@ -325,48 +325,48 @@ extension MapVC: MKMapViewDelegate{
             
             //print("Anno is poster is current user: \(parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId)")
 
-            if(parkingAnno.parkingSpot.dibbs == false && parkingAnno.parkingSpot.poster.objectId != PFUser.current()?.objectId){
+            if(parkingAnno.parkingSpot.dibs == false && parkingAnno.parkingSpot.poster.objectId != PFUser.current()?.objectId){
                 
-                // Checks if this user currently has a dibbs on a spot.
-                if dibbsSpot != nil{
-                    dibbsSpot?.dibbs = false
-                    dibbsSpot?.dibbsUser = nil
-                    dibbsSpot?.saveInBackground(block: { (success, error) in
+                // Checks if this user currently has a dibs on a spot.
+                if dibsSpot != nil{
+                    dibsSpot?.dibs = false
+                    dibsSpot?.dibsUser = nil
+                    dibsSpot?.saveInBackground(block: { (success, error) in
                         if let error = error{
                             print("problem 1")
                             print(error.localizedDescription)
                         } else{
-                            self.dibbsSpot = parkingAnno.parkingSpot
-                            parkingAnno.parkingSpot.dibbs = true
-                            parkingAnno.parkingSpot.dibbsUser = PFUser.current()
+                            self.dibsSpot = parkingAnno.parkingSpot
+                            parkingAnno.parkingSpot.dibs = true
+                            parkingAnno.parkingSpot.dibsUser = PFUser.current()
                             parkingAnno.parkingSpot.saveInBackground { (success, error) in
                                 if let error = error{
                                     print(error.localizedDescription)
                                     print("1")
                                 } else{
-                                    print("The Dibbs was maked.")
+                                    print("The Dibs was maked.")
                                 }
                             }
                         }
                     })
                 }else{
-                    self.dibbsSpot = parkingAnno.parkingSpot
-                    parkingAnno.parkingSpot.dibbs = true
-                    parkingAnno.parkingSpot.dibbsUser = PFUser.current()
+                    self.dibsSpot = parkingAnno.parkingSpot
+                    parkingAnno.parkingSpot.dibs = true
+                    parkingAnno.parkingSpot.dibsUser = PFUser.current()
                     parkingAnno.parkingSpot.saveInBackground { (success, error) in
                         if let error = error{
                             print(error.localizedDescription)
                             print("2")
                         } else{
-                            print("The Dibbs was maded.")
+                            print("The Dibs was maded.")
                         }
                     }
                 }
             }
             
-            if parkingAnno.parkingSpot.dibbsUser?.objectId == PFUser.current()?.objectId {
-                self.dibbsSpot = parkingAnno.parkingSpot
-                view.detailCalloutAccessoryView = createUndibbsBtn()
+            if parkingAnno.parkingSpot.dibsUser?.objectId == PFUser.current()?.objectId {
+                self.dibsSpot = parkingAnno.parkingSpot
+                view.detailCalloutAccessoryView = createUndibsBtn()
             } else if parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId {
                 self.selectedSpot = parkingAnno.parkingSpot
                 view.detailCalloutAccessoryView = createDeleteParkingBtn()
@@ -400,29 +400,29 @@ extension MapVC: MKMapViewDelegate{
         })
     }
     
-    func createUndibbsBtn() -> UIButton{
+    func createUndibsBtn() -> UIButton{
         let width = 250
         let height = 250
-        let unDibbsBtn = UIButton(frame: CGRect(x: 0, y: height - 35, width: width / 2 - 5, height: 35))
-        unDibbsBtn.setTitle("UnDibbs", for: .normal)
-        unDibbsBtn.backgroundColor = UIColor.darkGray
-        unDibbsBtn.layer.cornerRadius = 5
-        unDibbsBtn.layer.borderWidth = 1
-        unDibbsBtn.layer.borderColor = UIColor.black.cgColor
-        unDibbsBtn.addTarget(self, action: #selector(self.unDibbsSpot), for: .touchDown)
+        let unDibsBtn = UIButton(frame: CGRect(x: 0, y: height - 35, width: width / 2 - 5, height: 35))
+        unDibsBtn.setTitle("Un-Dibs", for: .normal)
+        unDibsBtn.backgroundColor = UIColor.darkGray
+        unDibsBtn.layer.cornerRadius = 5
+        unDibsBtn.layer.borderWidth = 1
+        unDibsBtn.layer.borderColor = UIColor.black.cgColor
+        unDibsBtn.addTarget(self, action: #selector(self.unDibsSpot), for: .touchDown)
         
-        return unDibbsBtn
+        return unDibsBtn
     }
     
-    @objc func unDibbsSpot(){
-        self.dibbsSpot?.dibbsUser = nil
-        self.dibbsSpot?.dibbs = false
-        self.dibbsSpot?.saveInBackground(block: { (success, error) in
+    @objc func unDibsSpot(){
+        self.dibsSpot?.dibsUser = nil
+        self.dibsSpot?.dibs = false
+        self.dibsSpot?.saveInBackground(block: { (success, error) in
             if let error = error{
                 print(error.localizedDescription)
             } else{
-                print("Undibbs was name")
-                self.dibbsSpot = nil
+                print("Undibs happen")
+                self.dibsSpot = nil
             }
         })
     }

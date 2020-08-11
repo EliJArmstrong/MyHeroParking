@@ -14,8 +14,8 @@ class ParkingSpot: PFObject, PFSubclassing{
     
     @NSManaged var location: PFGeoPoint
     @NSManaged var poster: PFUser
-    @NSManaged var dibbsUser: PFUser?
-    @NSManaged var dibbs: Bool
+    @NSManaged var dibsUser: PFUser?
+    @NSManaged var dibs: Bool
     
     
     static func parseClassName() -> String {
@@ -28,8 +28,8 @@ class ParkingSpot: PFObject, PFSubclassing{
             if let point = point {
                 spot.location = point
                 spot.poster = PFUser.current()!
-                spot.dibbs = false
-                spot.dibbsUser = nil
+                spot.dibs = false
+                spot.dibsUser = nil
                 spot.saveInBackground(block: completion)
             }
         }
@@ -39,7 +39,7 @@ class ParkingSpot: PFObject, PFSubclassing{
         let spot = ParkingSpot()
         spot.location = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
         spot.poster = PFUser.current()!
-        spot.dibbs = false
+        spot.dibs = false
         spot.saveInBackground(block: completion)
     }
 }
