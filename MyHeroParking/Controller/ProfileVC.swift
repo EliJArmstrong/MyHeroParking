@@ -13,31 +13,61 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     @IBOutlet weak var userImage: RoundedImage!
     var imagePicker =  UIImagePickerController()
+    @IBOutlet weak var userNameLbl: UILabel!
+    @IBOutlet weak var karmaLbl: UILabel!
     @IBOutlet weak var logoutBtn: UIButton!
     @IBOutlet weak var loginSignUpBtn: UIButton!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    private let itemsPerRow: CGFloat = 3
+    private let sectionInsets = UIEdgeInsets(top: 50.0,
+    left: 20.0,
+    bottom: 50.0,
+    right: 20.0)
+
+    var friendsList: [PFUser]?
     
     var signUpViewShowing = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
-        PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
-            if let imageData = imageData{
-                self.userImage.image = UIImage(data: imageData)
-            } else if let error = error{
-                print(error.localizedDescription)
-            }
-        })
+        // I set the delegate and data source in the storyboard
+        // collectionView.delegate = self
+        // collectionView.dataSource = self
         
         if PFAnonymousUtils.isLinked(with: PFUser.current()) {
             self.logoutBtn.isHidden = true
+            userNameLbl.text = "Anonymous User"
+            karmaLbl.text = "Login to gain Karma"
             signUpViewShowing = true
             performSegue(withIdentifier: "ToLoginSignUp", sender: self)
         } else{
             self.logoutBtn.isHidden = false
+            self.karmaLbl.text = "Karma: \(PFUser.current()?.experincePoints ?? 0)"
+            self.userNameLbl.text = PFUser.current()?.username
+            PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
+                if let imageData = imageData{
+                    self.userImage.image = UIImage(data: imageData)
+                } else if let error = error{
+                    print(error.localizedDescription)
+                }
+                //self.collectionView.reloadData()
+            })
         }
+        fetchFriendsData()
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchFriendsData(){
+        PFUser.fetchAllIfNeeded(inBackground: PFUser.current()?.friends) { (users, error) in
+            if let users = users as? [PFUser] {
+                self.friendsList = users
+                self.collectionView.reloadData()
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,18 +77,27 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     }
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-        let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-            self.openCamera()
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-            self.openGallary()
-        }))
-        
-        alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(alert, animated: true, completion: nil)
+        if PFAnonymousUtils.isLinked(with: PFUser.current()){
+            let alert = UIAlertController(title: "Sign in required", message: "Login to added an image", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self.present(alert, animated: true) {
+                print("alert happen")
+            }
+            
+        } else{
+            let alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                self.openCamera()
+            }))
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
+                self.openGallary()
+            }))
+            
+            alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func openCamera()
@@ -97,14 +136,101 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         dismiss(animated: true, completion: nil)
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ToLoginSignUp"{
+            
+        } else{
+            let friendVC = segue.destination as! FriendsVC
+            let cell = sender as! UICollectionViewCell
+            if let indexPath = self.collectionView.indexPath(for: cell){
+                friendVC.friend = self.friendsList![indexPath.item]
+            }
+        }
     }
-    */
+    
 
 }
+
+extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.friendsList?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView
+          .dequeueReusableCell(withReuseIdentifier: "FriendCell", for: indexPath) as! FriendCell
+        cell.userImg.image = #imageLiteral(resourceName: "friends_icon")
+        cell.setData(friendData: (self.friendsList![indexPath.row]))
+        // Configure the cell
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        // 1
+        switch kind {
+        // 2
+        case UICollectionView.elementKindSectionHeader:
+          // 3
+          guard
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+              ofKind: kind,
+              withReuseIdentifier: "collectionHeader",
+              for: indexPath) as? FriendHeader
+            else {
+              fatalError("Invalid view type")
+          }
+          if PFUser.current()?.friends.count == 0{
+            headerView.FriendsListLbl.text = "Following List"
+            headerView.numberOFFriendsLbl.text = "You are not folowing anyone"
+          } else{
+            headerView.FriendsListLbl.text = "Following List"
+            headerView.numberOFFriendsLbl.text = "\(PFUser.current()?.friends.count ?? 0)"
+          }
+          
+          return headerView
+        default:
+          // 4
+          assert(false, "Invalid element type")
+        }
+    }
+    
+}
+
+extension ProfileVC: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+      //2
+      let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+      let availableWidth = view.frame.width - paddingSpace
+      let widthPerItem = availableWidth / itemsPerRow
+      
+      return CGSize(width: widthPerItem, height: widthPerItem)
+    }
+    
+    //3
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+      return sectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+      return sectionInsets.left
+    }
+}
+

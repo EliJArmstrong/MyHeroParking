@@ -20,30 +20,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = ""
-                configuration.server = ""
+                configuration.applicationId = "ParkingHero"
+                configuration.server = "https://peaceful-reef-34773.herokuapp.com/parse"
+                
             })
         )
         
-        PFUser.enableAutomaticUser()
-        
-        PFGeoPoint.geoPointForCurrentLocation { (point, error) in
-            if let point = point{
-                PFUser.current()?.userLocation = point
-                PFUser.current()?.experincePoints = 0
-            }else{
-                print(error!.localizedDescription)
+        if PFUser.current() == nil{
+            PFUser.enableAutomaticUser()
+            
+            PFGeoPoint.geoPointForCurrentLocation { (point, error) in
+                if let point = point{
+                    PFUser.current()?.userLocation = point
+                    PFUser.current()?.experincePoints = 0
+                }else{
+                    print(error!.localizedDescription)
+                }
             }
+            
+            
+            PFUser.current()?.saveInBackground(block: { (success, error) in
+                if let error = error{
+                    print(error.localizedDescription)
+                } else{
+                    print("Automatic User Created. 😁")
+                    print("CREATED: 🦄 Username: \(PFUser.current()?.username ?? "No username") 🦄")
+                }
+            })
+        }else {
+            print("🦄 Username: \(PFUser.current()?.username ?? "No username") 🦄")
         }
         
-        
-        PFUser.current()?.saveInBackground(block: { (success, error) in
-            if let error = error{
-                print(error.localizedDescription)
-            } else{
-                print("Automatic User Created. 😁")
-            }
-        })
         return true
     }
 

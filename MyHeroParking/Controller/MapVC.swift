@@ -101,7 +101,7 @@ class MapVC: UIViewController{
     }
     
     
-    
+    // button image from --> <a href="https://www.freepik.com/vectors/button">Button vector created by starline - www.freepik.com</a>
     @IBAction func postSpot(_ sender: Any) {
         let spot = ParkingSpot()
         spot.saveParkingSpot { (success, error) in
@@ -220,6 +220,13 @@ class MapVC: UIViewController{
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toFriendVC"{
+            let friendVC = segue.destination as? FriendsVC
+            friendVC?.friend = selectedSpot?.poster
+        }
+    }
 
 }
 
@@ -308,6 +315,25 @@ extension MapVC: MKMapViewDelegate{
             let location = view.annotation as! ParkingAnnotation
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
             location.mapItem().openInMaps(launchOptions: launchOptions)
+        } else if control == view.leftCalloutAccessoryView{
+            let parkingAnno = view.annotation as! ParkingAnnotation
+            let button = view.leftCalloutAccessoryView as? UIButton
+            parkingAnno.parkingSpot.poster.image.getDataInBackground { (imageData, error) in
+                if let imageData = imageData {
+                    button?.setBackgroundImage(UIImage(data: imageData), for: UIControl.State())
+                } else if let error = error{
+                    print(error.localizedDescription)
+                }
+            }
+            if parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId{
+                // move to the tab bar 1 index
+                tabBarController?.selectedIndex = 1
+            } else{
+                // move to the selected (user that droped the spots) profile.
+                self.selectedSpot = parkingAnno.parkingSpot
+                performSegue(withIdentifier: "toFriendVC", sender: nil)
+            }
+            print("😜 left control 🤪")
         }
     }
     
@@ -370,6 +396,8 @@ extension MapVC: MKMapViewDelegate{
             } else if parkingAnno.parkingSpot.poster.objectId == PFUser.current()?.objectId {
                 self.selectedSpot = parkingAnno.parkingSpot
                 view.detailCalloutAccessoryView = createDeleteParkingBtn()
+            } else{
+                self.selectedSpot = parkingAnno.parkingSpot
             }
         }
         

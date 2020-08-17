@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		79E3837163C2C64850A86F6A /* Pods_MyHeroParking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886679171E54A8ED2E4E5CE /* Pods_MyHeroParking.framework */; };
+		B77F9D5224E7601200CDD94D /* FriendHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F9D5124E7601200CDD94D /* FriendHeader.swift */; };
+		B77F9D5424E7D77E00CDD94D /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F9D5324E7D77E00CDD94D /* FriendsVC.swift */; };
 		B78F275D224F53B0003EBF8C /* ParkingSpotViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */; };
+		B7906C0E24E3F2AA0077403E /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7906C0D24E3F2AA0077403E /* FriendCell.swift */; };
 		B7B5F08122479FE000CFC0BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F08022479FE000CFC0BD /* AppDelegate.swift */; };
 		B7B5F08322479FE000CFC0BD /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F08222479FE000CFC0BD /* MapVC.swift */; };
 		B7B5F08622479FE000CFC0BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7B5F08422479FE000CFC0BD /* Main.storyboard */; };
@@ -28,7 +31,10 @@
 		1886679171E54A8ED2E4E5CE /* Pods_MyHeroParking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHeroParking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84FAD84AE817CAE8FDDBCB96 /* Pods-MyHeroParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.release.xcconfig"; sourceTree = "<group>"; };
 		8AEF7F6A3A88B3316926B946 /* Pods-MyHeroParking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.debug.xcconfig"; sourceTree = "<group>"; };
+		B77F9D5124E7601200CDD94D /* FriendHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHeader.swift; sourceTree = "<group>"; };
+		B77F9D5324E7D77E00CDD94D /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSpotViews.swift; sourceTree = "<group>"; };
+		B7906C0D24E3F2AA0077403E /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		B7B5F07D22479FE000CFC0BD /* MyHeroParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHeroParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7B5F08022479FE000CFC0BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7B5F08222479FE000CFC0BD /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 				B7F4F90E230E4293009F52B5 /* RoundedImage.swift */,
 				B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */,
 				B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */,
+				B7906C0D24E3F2AA0077403E /* FriendCell.swift */,
+				B77F9D5124E7601200CDD94D /* FriendHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +93,7 @@
 				B7B5F08222479FE000CFC0BD /* MapVC.swift */,
 				B7F4F903230E13E2009F52B5 /* ProfileVC.swift */,
 				B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */,
+				B77F9D5324E7D77E00CDD94D /* FriendsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -110,11 +119,11 @@
 		B7B5F07F22479FE000CFC0BD /* MyHeroParking */ = {
 			isa = PBXGroup;
 			children = (
+				B7B5F08022479FE000CFC0BD /* AppDelegate.swift */,
+				B7B5F08422479FE000CFC0BD /* Main.storyboard */,
 				B78ED0C1225D8F7800252E31 /* Controller */,
 				B78ED0C0225D8F6C00252E31 /* View */,
 				B78ED0BF225D8F6300252E31 /* Model */,
-				B7B5F08022479FE000CFC0BD /* AppDelegate.swift */,
-				B7B5F08422479FE000CFC0BD /* Main.storyboard */,
 				B7B5F08722479FE200CFC0BD /* Assets.xcassets */,
 				B7B5F08922479FE200CFC0BD /* LaunchScreen.storyboard */,
 				B7B5F08C22479FE200CFC0BD /* Info.plist */,
@@ -260,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B77F9D5424E7D77E00CDD94D /* FriendsVC.swift in Sources */,
 				B7F4F906230E1F5E009F52B5 /* SignInLogInVC.swift in Sources */,
 				B7B5F09D2248783400CFC0BD /* parkingAnnotation.swift in Sources */,
 				B7F4F90F230E4293009F52B5 /* GradientView.swift in Sources */,
@@ -267,10 +277,12 @@
 				B7F4F904230E13E2009F52B5 /* ProfileVC.swift in Sources */,
 				B7B5F08322479FE000CFC0BD /* MapVC.swift in Sources */,
 				B7B5F08122479FE000CFC0BD /* AppDelegate.swift in Sources */,
+				B7906C0E24E3F2AA0077403E /* FriendCell.swift in Sources */,
 				B7F4F908230E4115009F52B5 /* Utilities.swift in Sources */,
 				B7B5F09A2247CB1000CFC0BD /* ParkingSpot.swift in Sources */,
 				B7F4F910230E4293009F52B5 /* RoundedImage.swift in Sources */,
 				B7B5F0982247C2D600CFC0BD /* User.swift in Sources */,
+				B77F9D5224E7601200CDD94D /* FriendHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
