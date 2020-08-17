@@ -33,6 +33,14 @@ The latest update of the app makes it so that only one user can claim only one p
 (Poster of the spots on the left and an other user on the left)
 <img src="/Gifs/DeleteParkingSpot.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
+[X] Add user image to the dropped of the user who dropped the spot and a VC to see the user info.
+<img src="/Gifs/spotuserimg.gif?raw=true" width="" alt= 'Video Walkthrough'>
+
+[x] Add email confirmation and password reset.
+<img src="/Gifs/confirm.png?raw=true" width="" alt= 'confrim'>
+<img src="/Gifs/reset.png?raw=true" width="" alt= 'confrim'>
+
+
 ## Credits
 
 List any 3rd party libraries, icons, graphics, or other assets:
