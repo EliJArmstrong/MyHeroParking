@@ -19,9 +19,9 @@ The latest update of the app makes it so that only one user can claim only one p
 
 [ ] Refactoring code to be more streamline
 
-[ ] User login page (xib) (VC added logic next)
+[ ] User login page (xib) (VC add logic next in progress)
 
-[ ] Added User profiles
+[ ] Added User profiles (In progress)
 
 [x] Add a button for users to un-dibs a spot.
 
