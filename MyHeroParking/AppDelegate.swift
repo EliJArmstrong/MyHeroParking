@@ -20,11 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = "ParkingHero"
-                configuration.server = "https://peaceful-reef-34773.herokuapp.com/parse"
+                configuration.applicationId = ""
+                configuration.server = ""
                 
             })
         )
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Wide", size: 23)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 1, blue: 0.5923928618, alpha: 1)], for: UIControl.State.normal)
         
         if PFUser.current() == nil{
             PFUser.enableAutomaticUser()

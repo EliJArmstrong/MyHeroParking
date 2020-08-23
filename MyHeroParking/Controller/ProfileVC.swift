@@ -29,7 +29,12 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     var signUpViewShowing = false
     
+    override func viewWillAppear(_ animated: Bool) {
+        fetchFriendsData()
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         imagePicker.delegate = self
         // I set the delegate and data source in the storyboard
@@ -78,7 +83,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         if PFAnonymousUtils.isLinked(with: PFUser.current()){
-            let alert = UIAlertController(title: "Sign in required", message: "Login to added an image", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Sign in required", message: "Login to add an image", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
             self.present(alert, animated: true) {
                 print("alert happen")
@@ -143,12 +148,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToLoginSignUp"{
             
-        } else{
+        } else if segue.identifier == "toFriendVC" {
             let friendVC = segue.destination as! FriendsVC
             let cell = sender as! UICollectionViewCell
             if let indexPath = self.collectionView.indexPath(for: cell){
                 friendVC.friend = self.friendsList![indexPath.item]
             }
+        } else {
+            print("No conditional for \(segue.identifier ?? "segue (no identifier given)")")
         }
     }
     
@@ -192,7 +199,7 @@ extension ProfileVC: UICollectionViewDelegate, UICollectionViewDataSource{
           }
           if PFUser.current()?.friends.count == 0{
             headerView.FriendsListLbl.text = "Following List"
-            headerView.numberOFFriendsLbl.text = "You are not folowing anyone"
+            headerView.numberOFFriendsLbl.text = "You are not following anyone"
           } else{
             headerView.FriendsListLbl.text = "Following List"
             headerView.numberOFFriendsLbl.text = "\(PFUser.current()?.friends.count ?? 0)"
