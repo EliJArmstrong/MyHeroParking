@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         // Override point for customization after application launch.
+        
+        // creates a connection to the server
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = ""
@@ -26,11 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
         )
         
+        // Makes the auto generated navigation elements match the reset of the app
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Wide", size: 23)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 1, blue: 0.5923928618, alpha: 1)], for: UIControl.State.normal)
         
+        // Checks to see if there is a user connected with this phone
         if PFUser.current() == nil{
-            PFUser.enableAutomaticUser()
+            PFUser.enableAutomaticUser() // if there is no user one is created
             
+            // the users location and karma is set
             PFGeoPoint.geoPointForCurrentLocation { (point, error) in
                 if let point = point{
                     PFUser.current()?.userLocation = point
@@ -41,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             
+            // The user data is sent to the server
             PFUser.current()?.saveInBackground(block: { (success, error) in
                 if let error = error{
                     print(error.localizedDescription)
@@ -50,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             })
         }else {
+            // debug print if the users an account
             print("🦄 Username: \(PFUser.current()?.username ?? "No username") 🦄")
         }
         
