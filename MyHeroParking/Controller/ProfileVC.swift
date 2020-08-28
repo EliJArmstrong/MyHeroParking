@@ -31,24 +31,17 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     
     override func viewWillAppear(_ animated: Bool) {
         fetchFriendsData()
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        imagePicker.delegate = self
-        // I set the delegate and data source in the storyboard
-        // collectionView.delegate = self
-        // collectionView.dataSource = self
-        
         if PFAnonymousUtils.isLinked(with: PFUser.current()) {
             self.logoutBtn.isHidden = true
+            self.loginSignUpBtn.isHidden = false
             userNameLbl.text = "Anonymous User"
             karmaLbl.text = "Login to gain Karma"
+            userImage.image = #imageLiteral(resourceName: "add_photo_btn")
             signUpViewShowing = true
-            performSegue(withIdentifier: "ToLoginSignUp", sender: self)
+            //performSegue(withIdentifier: "ToLoginSignUp", sender: self)
         } else{
             self.logoutBtn.isHidden = false
+            self.loginSignUpBtn.isHidden = true
             self.karmaLbl.text = "Karma: \(PFUser.current()?.experincePoints ?? 0)"
             self.userNameLbl.text = PFUser.current()?.username
             PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
@@ -60,8 +53,43 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 //self.collectionView.reloadData()
             })
         }
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        imagePicker.delegate = self
+        // I set the delegate and data source in the storyboard
+        // collectionView.delegate = self
+        // collectionView.dataSource = self
+        
+        checkForAnonymousUser()
         fetchFriendsData()
         // Do any additional setup after loading the view.
+    }
+    
+    func checkForAnonymousUser() {
+        if PFAnonymousUtils.isLinked(with: PFUser.current()) {
+            self.logoutBtn.isHidden = true
+            self.loginSignUpBtn.isHidden = false
+            userNameLbl.text = "Anonymous User"
+            karmaLbl.text = "Login to gain Karma"
+            signUpViewShowing = true
+            performSegue(withIdentifier: "ToLoginSignUp", sender: self)
+        } else{
+            self.logoutBtn.isHidden = false
+            self.loginSignUpBtn.isHidden = true
+            self.karmaLbl.text = "Karma: \(PFUser.current()?.experincePoints ?? 0)"
+            self.userNameLbl.text = PFUser.current()?.username
+            PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
+                if let imageData = imageData{
+                    self.userImage.image = UIImage(data: imageData)
+                } else if let error = error{
+                    print(error.localizedDescription)
+                }
+                //self.collectionView.reloadData()
+            })
+        }
     }
     
     func fetchFriendsData(){
@@ -75,6 +103,21 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        PFUser.logOutInBackground { (error) in
+            if let error = error{
+                self.present(Utilities.createAlert(titleOfAleart: "Logout error", message: error.localizedDescription), animated: true, completion: nil)
+            } else {
+                PFAnonymousUtils.logIn { (user, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        self.viewWillAppear(true)
+                    }
+                }
+            }
+        }
+    }
     override func viewDidAppear(_ animated: Bool) {
         if PFAnonymousUtils.isLinked(with: PFUser.current()) && !signUpViewShowing {
             performSegue(withIdentifier: "ToLoginSignUp", sender: self)

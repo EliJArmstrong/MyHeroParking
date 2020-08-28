@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpVC: UIViewController {
 
@@ -22,8 +23,37 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpbuttonPressed(_ sender: Any) {
-       
+        //print("🥶 \(emailField.text?.lowercased()) 🥶")
+        if Utilities.isValidEmail(emailField.text?.lowercased() ?? ""){
+            
+            PFUser.current()?.username = usernameField.text?.lowercased() ?? ""
+            PFUser.current()?.password = passwordField.text ?? ""
+            PFUser.current()?.email = emailField.text?.lowercased() ?? ""
+            
+            
+            PFUser.current()?.signUpInBackground(block: { (success, error) in
+                if let error = error {
+                    self.present(Utilities.createAlert(titleOfAleart: "SignUp Error", message: error.localizedDescription), animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: "Email Sent", message: "An validation email was sent to \(self.emailField.text!)", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (_) in
+                        self.popNavView()
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+        } else{
+            self.present(Utilities.createAlert(titleOfAleart: "SignUp Error", message: "Email invild"), animated: true, completion: nil)
+        }
+        
+        
     }
+    
+    func popNavView(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     
     /*
     // MARK: - Navigation

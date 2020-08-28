@@ -16,6 +16,12 @@ class SignInLogInVC: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        if !PFAnonymousUtils.isLinked(with: PFUser.current()) {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,15 +39,17 @@ class SignInLogInVC: UIViewController {
     
     func loginWithEmail(){
         let queryUser = PFUser.query()
-        queryUser?.whereKey("email", equalTo: emailField.text ?? "noemail")
+        let email = emailField.text!.lowercased()
+        queryUser?.whereKey("email", equalTo: email)
         queryUser?.getFirstObjectInBackground(block: { (user, error) in
             if let user = user{
                let pfuser = user as! PFUser
                 PFUser.logInWithUsername(inBackground: pfuser.username!, password: self.passwordField.text!) { (PFUser, error) in
                     if let error = error {
-                        self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
+                        self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: "Could not find the email linked to an account"), animated: true, completion: nil)
+                        print(error.localizedDescription)
                     } else{
-                        self.dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             } else if let error = error {
@@ -52,11 +60,12 @@ class SignInLogInVC: UIViewController {
     
     
     func loginWithUsername(){
-        PFUser.logInWithUsername(inBackground: self.emailField.text!, password: self.passwordField.text!) { (user, error) in
+        let email = self.emailField.text!.lowercased()
+        PFUser.logInWithUsername(inBackground: email, password: self.passwordField.text!) { (user, error) in
             if let error = error {
                 self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
             } else{
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -72,6 +81,6 @@ class SignInLogInVC: UIViewController {
     */
 
     @IBAction func backBtnPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+       self.navigationController?.popViewController(animated: true)
     }
 }
