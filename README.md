@@ -26,30 +26,39 @@ The latest update of the app makes it so that only one user can claim only one p
 (Poster of the spots on the left and an other user on the left)
 <img src="/Gifs/DeleteParkingSpot.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
-[X] Add user image to the dropped of the user who dropped the spot and a VC to see the user info.
+[x] Add user image to the dropped of the user who dropped the spot and a VC to see the user info.
+
 <img src="/Gifs/spotuserimg.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
 [x] User Sign UP
+
 <img src="/Gifs/signup.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
-[X] User login page
+[x] User login page
+
 <img src="/Gifs/login.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
-[X] Added User profiles 
-  - [X] letting user selecte there own user image
-  - <img src="/Gifs/userImage.gif?raw=true" width="" alt= 'Video Walkthrough'>
+# [x] Added User profiles 
+
+[x] letting user selecte there own user image
+
+<img src="/Gifs/userImage.gif?raw=true" width="" alt= 'Video Walkthrough'>
   
-  - [x] Follow Other Profiles
-  - <img src="/Gifs/followothers.gif?raw=true" width="" alt= 'Video Walkthrough'>
+[x] Follow Other Profiles
+
+<img src="/Gifs/followothers.gif?raw=true" width="" alt= 'Video Walkthrough'>
   
- [X] open parking spot in maps
- <img src="/Gifs/maps.gif?raw=true" width="" alt= 'Video Walkthrough'>
+[x] open parking spot in maps
+
+<img src="/Gifs/maps.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
 [x] Add email confirmation and password reset.
+
 <img src="/Gifs/confirm.png?raw=true" width="" alt= 'confrim'>
 <img src="/Gifs/reset.png?raw=true" width="" alt= 'confrim'>
 
 [x] Forgot password VC
+
 <img src="/Gifs/passwordresetonapp.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
 # Up Next 
