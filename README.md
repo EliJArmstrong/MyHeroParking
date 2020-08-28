@@ -14,14 +14,7 @@ The latest update of the app makes it so that only one user can claim only one p
 
 <img src="/Gifs/parkingApp.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
-# Up Next 
-
-
-[ ] Refactoring code to be more streamline
-
-[ ] User login page (xib) (VC add logic next in progress)
-
-[ ] Added User profiles (In progress)
+# completed
 
 [x] Add a button for users to un-dibs a spot.
 
@@ -39,6 +32,16 @@ The latest update of the app makes it so that only one user can claim only one p
 [x] Add email confirmation and password reset.
 <img src="/Gifs/confirm.png?raw=true" width="" alt= 'confrim'>
 <img src="/Gifs/reset.png?raw=true" width="" alt= 'confrim'>
+
+# Up Next 
+
+
+[ ] Refactoring code to be more streamline
+
+[ ] User login page (xib) (VC add logic next in progress)
+
+[ ] Added User profiles (In progress)
+
 
 
 ## Credits
