@@ -29,18 +29,35 @@ The latest update of the app makes it so that only one user can claim only one p
 [X] Add user image to the dropped of the user who dropped the spot and a VC to see the user info.
 <img src="/Gifs/spotuserimg.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
+[x] User Sign UP
+<img src="/Gifs/signup.gif?raw=true" width="" alt= 'Video Walkthrough'>
+
+[X] User login page
+<img src="/Gifs/login.gif?raw=true" width="" alt= 'Video Walkthrough'>
+
+[X] Added User profiles 
+  - [X] letting user selecte there own user image
+  - <img src="/Gifs/userImage.gif?raw=true" width="" alt= 'Video Walkthrough'>
+  
+  - [x] Follow Other Profiles
+  - <img src="/Gifs/followothers.gif?raw=true" width="" alt= 'Video Walkthrough'>
+  
+ [X] open parking spot in maps
+ <img src="/Gifs/maps.gif?raw=true" width="" alt= 'Video Walkthrough'>
+
 [x] Add email confirmation and password reset.
 <img src="/Gifs/confirm.png?raw=true" width="" alt= 'confrim'>
 <img src="/Gifs/reset.png?raw=true" width="" alt= 'confrim'>
+
+[x] Forgot password VC
+<img src="/Gifs/passwordresetonapp.gif?raw=true" width="" alt= 'Video Walkthrough'>
 
 # Up Next 
 
 
 [ ] Refactoring code to be more streamline
 
-[ ] User login page (xib) (VC add logic next in progress)
-
-[ ] Added User profiles (In progress)
+[ ] Direct messaging (stretch goal)
 
 
 
