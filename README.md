@@ -5,7 +5,7 @@ Thank you for checking out the app. This app is an early attempt to make a socia
 This app is currently in development and the code will change as time goes on.
 The current code was just to figure out features and the look of the app. (Code beautification coming soon)
 
-This is a side project IOS app to help people connect by sharing when the parking space there is available. This App uses a custom parse DB to store and share data.
+This is a side project IOS app to help people connect by sharing when a parking space is available. This App uses a custom parse DB to store and share data.
 
 Currently, the app will let the user drop a parking spot and let the user or other users call dibs on the available parking spots.
 Available parking spots are in green and spots that are taken are red.
