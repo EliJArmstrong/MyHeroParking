@@ -5,6 +5,7 @@ MyHeroParking/Model/API.swift
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 #API stuff
+MyHeroParking/Model/API.swift
 Model/API.swift
 API.swift
 
