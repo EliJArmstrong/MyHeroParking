@@ -22,12 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // creates a connection to the server
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = ""
-                configuration.server = ""
+                let api = API();
+                configuration.applicationId = api.applicationId
+                configuration.server = api.server
                 
             })
         )
-        
+        print("hello")
         // Makes the auto generated navigation elements match the reset of the app
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "MarkerFelt-Wide", size: 23)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0, green: 1, blue: 0.5923928618, alpha: 1)], for: UIControl.State.normal)
         
@@ -39,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             PFGeoPoint.geoPointForCurrentLocation { (point, error) in
                 if let point = point{
                     PFUser.current()?.userLocation = point
-                    PFUser.current()?.experincePoints = 0
+                    PFUser.current()?.experiencePoints = 0
                 }else{
                     print(error!.localizedDescription)
                 }

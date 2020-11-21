@@ -23,9 +23,9 @@ class PasswordResetVC: UIViewController {
         if Utilities.isValidEmail(emailField.text!){
             PFUser.requestPasswordResetForEmail(inBackground: emailField.text!) { (success, error) in
                 if let error = error {
-                    self.present(Utilities.createAlert(titleOfAleart: "Error", message: error.localizedDescription), animated: true, completion: nil)
+                    self.present(Utilities.createAlert(titleOfAlert: "Error", message: error.localizedDescription), animated: true, completion: nil)
                 } else if success {
-                    let alert = UIAlertController(title: "Password Reset", message: "If email is in our records an email will be sent wwith a reset password link", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Password Reset", message: "If email is in our records an email will be sent to you with a reset password link", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { (_) in
                         self.navigationController?.popViewController(animated: true)
                     }))

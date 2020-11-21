@@ -202,10 +202,9 @@ class MapVC: UIViewController{
         }
     }
     
-    
     /// Check the authorization Status of location services allowed by the user.
     func checkLocationAuthorization(){
-        switch CLLocationManager.authorizationStatus(){
+        switch locationManager.authorizationStatus{
         case .authorizedAlways:
             fallthrough
         case .authorizedWhenInUse:

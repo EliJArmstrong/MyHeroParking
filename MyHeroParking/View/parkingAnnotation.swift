@@ -40,8 +40,8 @@ class ParkingAnnotation: NSObject, MKAnnotation {
     func mapItem() -> MKMapItem {
 //         [CNPostalAddressStreetKey: title!]
         let addressDict = [CNPostalAddressStreetKey: "Cool"]
-        let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
-        let mapItem = MKMapItem(placemark: placemark)
+        let placeMark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDict)
+        let mapItem = MKMapItem(placemark: placeMark)
         mapItem.name = "MapCordBtn"
         return mapItem
     }

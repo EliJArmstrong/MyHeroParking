@@ -1,23 +1,23 @@
 PODS:
-  - Alamofire (5.2.2)
+  - Alamofire (5.4.0)
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - Bolts-Swift (1.5.0)
   - Bolts/Tasks (1.9.1)
-  - Parse (1.18.0):
-    - Parse/Core (= 1.18.0)
-  - Parse/Core (1.18.0):
+  - Parse (1.19.1):
+    - Parse/Core (= 1.19.1)
+  - Parse/Core (1.19.1):
     - Bolts/Tasks (= 1.9.1)
-  - ParseLiveQuery (2.7.1):
+  - ParseLiveQuery (2.8.0):
     - Bolts-Swift (~> 1.5.0)
-    - Parse (~> 1.18.0)
-    - Starscream (= 3.1.0)
-  - Starscream (3.1.0)
+    - Parse (~> 1.19.0)
+    - Starscream (~> 4.0.4)
+  - Starscream (4.0.4)
 
 DEPENDENCIES:
   - AlamofireImage
   - Parse
-  - ParseLiveQuery
+  - ParseLiveQuery (from `https://github.com/parse-community/ParseLiveQuery-iOS-OSX`, branch `master`)
 
 SPEC REPOS:
   trunk:
@@ -26,18 +26,27 @@ SPEC REPOS:
     - Bolts
     - Bolts-Swift
     - Parse
-    - ParseLiveQuery
     - Starscream
 
+EXTERNAL SOURCES:
+  ParseLiveQuery:
+    :branch: master
+    :git: https://github.com/parse-community/ParseLiveQuery-iOS-OSX
+
+CHECKOUT OPTIONS:
+  ParseLiveQuery:
+    :commit: 96191042d721aadfddde41298120f87c2496f09b
+    :git: https://github.com/parse-community/ParseLiveQuery-iOS-OSX
+
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Bolts-Swift: afbbaf8c8186e7f769be4afa656949c14087ba44
-  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
-  ParseLiveQuery: bcb96da6d782c953ea96fba2883ff298b05cc0f4
-  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
+  ParseLiveQuery: 366b5876aa20074ea7fea52446376e102447b5df
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: 582354d1917ba09664835124d59527334dbe125e
+PODFILE CHECKSUM: 00d1f2f06245296479102d8cd8976bc8b796f0b3
 
 COCOAPODS: 1.8.4

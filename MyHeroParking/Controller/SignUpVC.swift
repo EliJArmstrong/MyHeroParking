@@ -22,7 +22,7 @@ class SignUpVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func signUpbuttonPressed(_ sender: Any) {
+    @IBAction func signUpBtnPressed(_ sender: Any) {
         //print("🥶 \(emailField.text?.lowercased()) 🥶")
         if Utilities.isValidEmail(emailField.text?.lowercased() ?? ""){
             
@@ -33,7 +33,7 @@ class SignUpVC: UIViewController {
             
             PFUser.current()?.signUpInBackground(block: { (success, error) in
                 if let error = error {
-                    self.present(Utilities.createAlert(titleOfAleart: "SignUp Error", message: error.localizedDescription), animated: true, completion: nil)
+                    self.present(Utilities.createAlert(titleOfAlert: "SignUp Error", message: error.localizedDescription), animated: true, completion: nil)
                 } else {
                     let alert = UIAlertController(title: "Email Sent", message: "An validation email was sent to \(self.emailField.text!)", preferredStyle: .alert)
                     
@@ -44,7 +44,7 @@ class SignUpVC: UIViewController {
                 }
             })
         } else{
-            self.present(Utilities.createAlert(titleOfAleart: "SignUp Error", message: "Email invild"), animated: true, completion: nil)
+            self.present(Utilities.createAlert(titleOfAlert: "SignUp Error", message: "Email invild"), animated: true, completion: nil)
         }
         
         

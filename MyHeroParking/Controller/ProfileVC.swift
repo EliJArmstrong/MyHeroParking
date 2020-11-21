@@ -42,7 +42,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         } else{
             self.logoutBtn.isHidden = false
             self.loginSignUpBtn.isHidden = true
-            self.karmaLbl.text = "Karma: \(PFUser.current()?.experincePoints ?? 0)"
+            self.karmaLbl.text = "Karma: \(PFUser.current()?.experiencePoints ?? 0)"
             self.userNameLbl.text = PFUser.current()?.username
             PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
                 if let imageData = imageData{
@@ -79,7 +79,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         } else{
             self.logoutBtn.isHidden = false
             self.loginSignUpBtn.isHidden = true
-            self.karmaLbl.text = "Karma: \(PFUser.current()?.experincePoints ?? 0)"
+            self.karmaLbl.text = "Karma: \(PFUser.current()?.experiencePoints ?? 0)"
             self.userNameLbl.text = PFUser.current()?.username
             PFUser.current()?.image.getDataInBackground(block: { (imageData, error) in
                 if let imageData = imageData{
@@ -106,7 +106,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBAction func logOutButtonPressed(_ sender: Any) {
         PFUser.logOutInBackground { (error) in
             if let error = error{
-                self.present(Utilities.createAlert(titleOfAleart: "Logout error", message: error.localizedDescription), animated: true, completion: nil)
+                self.present(Utilities.createAlert(titleOfAlert: "Logout error", message: error.localizedDescription), animated: true, completion: nil)
             } else {
                 PFAnonymousUtils.logIn { (user, error) in
                     if let error = error {
@@ -139,7 +139,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
                 self.openCamera()
             }))
             alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler: { _ in
-                self.openGallary()
+                self.openGallery()
             }))
             
             alert.addAction(UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil))
@@ -164,7 +164,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         }
     }
     
-    func openGallary()
+    func openGallery()
     {
         imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.allowsEditing = true

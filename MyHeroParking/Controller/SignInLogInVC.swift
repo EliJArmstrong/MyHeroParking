@@ -28,7 +28,7 @@ class SignInLogInVC: UIViewController {
     }
     
     
-    @IBAction func LoginBtnaPressed(_ sender: Any) {
+    @IBAction func LoginBtnPressed(_ sender: Any) {
         if emailField.text!.contains("@") && emailField.text!.contains("."){
             loginWithEmail()
         } else{
@@ -43,17 +43,17 @@ class SignInLogInVC: UIViewController {
         queryUser?.whereKey("email", equalTo: email)
         queryUser?.getFirstObjectInBackground(block: { (user, error) in
             if let user = user{
-               let pfuser = user as! PFUser
-                PFUser.logInWithUsername(inBackground: pfuser.username!, password: self.passwordField.text!) { (PFUser, error) in
+               let pfUser = user as! PFUser
+                PFUser.logInWithUsername(inBackground: pfUser.username!, password: self.passwordField.text!) { (PFUser, error) in
                     if let error = error {
-                        self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: "Could not find the email linked to an account"), animated: true, completion: nil)
+                        self.present(Utilities.createAlert(titleOfAlert: "Login Error", message: "Could not find the email linked to an account"), animated: true, completion: nil)
                         print(error.localizedDescription)
                     } else{
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
             } else if let error = error {
-                self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
+                self.present(Utilities.createAlert(titleOfAlert: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
             }
         })
     }
@@ -63,7 +63,7 @@ class SignInLogInVC: UIViewController {
         let email = self.emailField.text!.lowercased()
         PFUser.logInWithUsername(inBackground: email, password: self.passwordField.text!) { (user, error) in
             if let error = error {
-                self.present(Utilities.createAlert(titleOfAleart: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
+                self.present(Utilities.createAlert(titleOfAlert: "Login Error", message: error.localizedDescription), animated: true, completion: nil)
             } else{
                 self.navigationController?.popViewController(animated: true)
             }

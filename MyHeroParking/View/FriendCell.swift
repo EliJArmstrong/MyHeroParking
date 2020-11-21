@@ -21,7 +21,7 @@ class FriendCell: UICollectionViewCell {
             } else if let imageData = imageData {
                 self.userImg.image = UIImage(data: imageData)
             } else{
-                print("Somthing crazy happen if we made it here. 🤪")
+                print("Something crazy happen if we made it here. 🤪")
             }
         }
     }

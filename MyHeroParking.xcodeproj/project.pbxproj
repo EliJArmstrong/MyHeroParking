@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		79E3837163C2C64850A86F6A /* Pods_MyHeroParking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1886679171E54A8ED2E4E5CE /* Pods_MyHeroParking.framework */; };
 		B77F9D5224E7601200CDD94D /* FriendHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F9D5124E7601200CDD94D /* FriendHeader.swift */; };
 		B77F9D5424E7D77E00CDD94D /* FriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77F9D5324E7D77E00CDD94D /* FriendsVC.swift */; };
 		B78F275D224F53B0003EBF8C /* ParkingSpotViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */; };
@@ -22,17 +21,19 @@
 		B7B5F09D2248783400CFC0BD /* parkingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */; };
 		B7C0B37324F228B00001C897 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C0B37224F228B00001C897 /* SignUpVC.swift */; };
 		B7C0B37524F2A9A60001C897 /* PasswordResetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C0B37424F2A9A60001C897 /* PasswordResetVC.swift */; };
+		B7C286B02531887300CDFD98 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C286AF2531887300CDFD98 /* API.swift */; };
 		B7F4F904230E13E2009F52B5 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F903230E13E2009F52B5 /* ProfileVC.swift */; };
 		B7F4F906230E1F5E009F52B5 /* SignInLogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */; };
 		B7F4F908230E4115009F52B5 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F907230E4115009F52B5 /* Utilities.swift */; };
 		B7F4F90F230E4293009F52B5 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F90D230E4293009F52B5 /* GradientView.swift */; };
 		B7F4F910230E4293009F52B5 /* RoundedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4F90E230E4293009F52B5 /* RoundedImage.swift */; };
+		CA486A8CE36E10623F443A74 /* Pods_MyHeroParking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8672BB4A9EB93202ECDA8160 /* Pods_MyHeroParking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1886679171E54A8ED2E4E5CE /* Pods_MyHeroParking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHeroParking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84FAD84AE817CAE8FDDBCB96 /* Pods-MyHeroParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.release.xcconfig"; sourceTree = "<group>"; };
-		8AEF7F6A3A88B3316926B946 /* Pods-MyHeroParking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.debug.xcconfig"; sourceTree = "<group>"; };
+		734BF58925792F7554A9EF53 /* Pods-MyHeroParking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.release.xcconfig"; path = "Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.release.xcconfig"; sourceTree = "<group>"; };
+		8672BB4A9EB93202ECDA8160 /* Pods_MyHeroParking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyHeroParking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		966F1823C3FCF77593C17942 /* Pods-MyHeroParking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyHeroParking.debug.xcconfig"; path = "Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking.debug.xcconfig"; sourceTree = "<group>"; };
 		B77F9D5124E7601200CDD94D /* FriendHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendHeader.swift; sourceTree = "<group>"; };
 		B77F9D5324E7D77E00CDD94D /* FriendsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsVC.swift; sourceTree = "<group>"; };
 		B78F275C224F53B0003EBF8C /* ParkingSpotViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkingSpotViews.swift; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		B7B5F09C2248783400CFC0BD /* parkingAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = parkingAnnotation.swift; sourceTree = "<group>"; };
 		B7C0B37224F228B00001C897 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		B7C0B37424F2A9A60001C897 /* PasswordResetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetVC.swift; sourceTree = "<group>"; };
+		B7C286AF2531887300CDFD98 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		B7F4F903230E13E2009F52B5 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		B7F4F905230E1F5E009F52B5 /* SignInLogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInLogInVC.swift; sourceTree = "<group>"; };
 		B7F4F907230E4115009F52B5 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -61,19 +63,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79E3837163C2C64850A86F6A /* Pods_MyHeroParking.framework in Frameworks */,
+				CA486A8CE36E10623F443A74 /* Pods_MyHeroParking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D4D0F8E7F09F6C7B32F76EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8672BB4A9EB93202ECDA8160 /* Pods_MyHeroParking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B78ED0BF225D8F6300252E31 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B7B5F0972247C2D600CFC0BD /* User.swift */,
 				B7B5F0992247CB1000CFC0BD /* ParkingSpot.swift */,
 				B7F4F907230E4115009F52B5 /* Utilities.swift */,
+				B7C286AF2531887300CDFD98 /* API.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -109,8 +120,8 @@
 			children = (
 				B7B5F07F22479FE000CFC0BD /* MyHeroParking */,
 				B7B5F07E22479FE000CFC0BD /* Products */,
-				B7B5F0922247C11C00CFC0BD /* Frameworks */,
-				F2526F63BE78F65421296FAA /* Pods */,
+				C86673C8AD773334ADE18D30 /* Pods */,
+				5D4D0F8E7F09F6C7B32F76EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,21 +148,13 @@
 			path = MyHeroParking;
 			sourceTree = "<group>";
 		};
-		B7B5F0922247C11C00CFC0BD /* Frameworks */ = {
+		C86673C8AD773334ADE18D30 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1886679171E54A8ED2E4E5CE /* Pods_MyHeroParking.framework */,
+				966F1823C3FCF77593C17942 /* Pods-MyHeroParking.debug.xcconfig */,
+				734BF58925792F7554A9EF53 /* Pods-MyHeroParking.release.xcconfig */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		F2526F63BE78F65421296FAA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8AEF7F6A3A88B3316926B946 /* Pods-MyHeroParking.debug.xcconfig */,
-				84FAD84AE817CAE8FDDBCB96 /* Pods-MyHeroParking.release.xcconfig */,
-			);
-			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,11 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7B5F08F22479FE200CFC0BD /* Build configuration list for PBXNativeTarget "MyHeroParking" */;
 			buildPhases = (
-				62B3BB1DD0BCB8F3E714BD2B /* [CP] Check Pods Manifest.lock */,
+				A34B0D697C124FACA037AD41 /* [CP] Check Pods Manifest.lock */,
 				B7B5F07922479FE000CFC0BD /* Sources */,
 				B7B5F07A22479FE000CFC0BD /* Frameworks */,
 				B7B5F07B22479FE000CFC0BD /* Resources */,
-				CABE44ED1271AEA52C4B25AE /* [CP] Embed Pods Frameworks */,
+				58460D0BEDFC7226777EC01C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -183,7 +186,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Eli Armstrong";
 				TargetAttributes = {
 					B7B5F07C22479FE000CFC0BD = {
@@ -229,7 +232,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		62B3BB1DD0BCB8F3E714BD2B /* [CP] Check Pods Manifest.lock */ = {
+		58460D0BEDFC7226777EC01C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A34B0D697C124FACA037AD41 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,23 +271,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CABE44ED1271AEA52C4B25AE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyHeroParking/Pods-MyHeroParking-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -287,6 +290,7 @@
 				B7F4F908230E4115009F52B5 /* Utilities.swift in Sources */,
 				B7B5F09A2247CB1000CFC0BD /* ParkingSpot.swift in Sources */,
 				B7F4F910230E4293009F52B5 /* RoundedImage.swift in Sources */,
+				B7C286B02531887300CDFD98 /* API.swift in Sources */,
 				B7B5F0982247C2D600CFC0BD /* User.swift in Sources */,
 				B7C0B37324F228B00001C897 /* SignUpVC.swift in Sources */,
 				B77F9D5224E7601200CDD94D /* FriendHeader.swift in Sources */,
@@ -342,6 +346,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -367,7 +372,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -403,6 +408,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -422,7 +428,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -434,7 +440,7 @@
 		};
 		B7B5F09022479FE200CFC0BD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8AEF7F6A3A88B3316926B946 /* Pods-MyHeroParking.debug.xcconfig */;
+			baseConfigurationReference = 966F1823C3FCF77593C17942 /* Pods-MyHeroParking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -444,6 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = core.ParkingHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -453,7 +460,7 @@
 		};
 		B7B5F09122479FE200CFC0BD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 84FAD84AE817CAE8FDDBCB96 /* Pods-MyHeroParking.release.xcconfig */;
+			baseConfigurationReference = 734BF58925792F7554A9EF53 /* Pods-MyHeroParking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -463,6 +470,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = core.ParkingHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -24,7 +24,7 @@ class FriendsVC: UIViewController {
         super.viewDidLoad()
 // self.bar
         setupButtons(buttons: [karmaBtn, followBtn])
-        karmaLbl.text = "\(friend.experincePoints)"
+        karmaLbl.text = "\(friend.experiencePoints)"
         usernameLbl.text = friend.username
         if friendInList(){
             followBtn.setTitle("Unfollow", for: .normal)
@@ -67,12 +67,12 @@ class FriendsVC: UIViewController {
     }
     
     @IBAction func touchedGiveKarmaBtn(_ sender: Any) {
-        self.friend.incrementKey("experincePoints")
-        self.friend.saveInBackground { (sucess, error) in
+        self.friend.incrementKey("experiencePoints")
+        self.friend.saveInBackground { (success, error) in
             if let error = error {
                 print("Karma Failed")
                 print(error.localizedDescription)
-                self.present(Utilities.createAlert(titleOfAleart: "Anonymous user error", message: error.localizedDescription), animated: true, completion: nil)
+                self.present(Utilities.createAlert(titleOfAlert: "Anonymous user error", message: error.localizedDescription), animated: true, completion: nil)
             } else {
                 print("Karma increased")
                 self.karmaLbl.text = "\(Int(self.karmaLbl.text ?? "0")! + 1)"
