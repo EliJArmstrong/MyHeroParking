@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 let api = API();
-                configuration.applicationId = api.applicationId
-                configuration.server = api.server
+                configuration.applicationId = api.applicationId // Use your own APP ID
+                configuration.server = api.server // Use your own server URL
                 
             })
         )

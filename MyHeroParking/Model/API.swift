@@ -10,6 +10,6 @@ import Foundation
 
 
 struct API {
-    let applicationId = ""
-    let server = ""
+    let applicationId = "ParkingHero" // Your app id
+    let server = "https://peaceful-sunshine-34773.herokuapp.com/parse" // Your server url
 }
